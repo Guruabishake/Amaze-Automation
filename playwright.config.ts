@@ -11,8 +11,9 @@ export default defineConfig({
   // opens 7 simultaneous sessions on one account - on top of whatever the dedicated config is
   // already running - and the app allows only one active session per account. Excluding
   // e2e/AmazerTrans here forces every invocation through its own config, which is the only
-  // correct way to run it anyway.
-  testIgnore: '**/AmazerTrans/**',
+  // correct way to run it anyway. DivyaImpex (e2e/DivyaImpex/playwright.config.ts) is excluded for
+  // the same single-session reason.
+  testIgnore: ['**/AmazerTrans/**', '**/DivyaImpex/**'],
   timeout: 100000,
   /* Run tests in files in parallel */
   fullyParallel: true,
