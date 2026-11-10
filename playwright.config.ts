@@ -2,6 +2,18 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
+  // AmazerTrans has its own dedicated config (e2e/AmazerTrans/playwright.config.ts) with a
+  // config-driven, per-user account architecture - every spec there logs in with a real account
+  // via a fixture whose DEFAULT resolves to a genuine, real credential. Confirmed live: running
+  // pricing.spec.ts through THIS root config (e.g. a bare `npx playwright test
+  // e2e/AmazerTrans/tests/pricing.spec.ts` with no --config flag) makes every one of the 7 browser
+  // projects below fall back to that same default account, so a single accidental bare invocation
+  // opens 7 simultaneous sessions on one account - on top of whatever the dedicated config is
+  // already running - and the app allows only one active session per account. Excluding
+  // e2e/AmazerTrans here forces every invocation through its own config, which is the only
+  // correct way to run it anyway. DivyaImpex (e2e/DivyaImpex/playwright.config.ts) is excluded for
+  // the same single-session reason.
+  testIgnore: ['**/AmazerTrans/**', '**/DivyaImpex/**'],
   timeout: 100000,
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -19,14 +31,20 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: !!process.env.CI,
+    // HEADLESS=true / HEADLESS=false overrides the CI-based default below without touching this file.
+    headless: process.env.HEADLESS !== undefined ? process.env.HEADLESS === 'true' : !!process.env.CI,
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    // VIDEO=off | on | retain-on-failure | on-first-retry overrides the default below.
+    video: (process.env.VIDEO as 'off' | 'on' | 'retain-on-failure' | 'on-first-retry') || 'retain-on-failure',
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
+    // SLOW_MO=300 (ms) slows down each Playwright action for manual observation; 0 (default) is unthrottled.
+    launchOptions: {
+      slowMo: Number(process.env.SLOW_MO) || 0,
+    },
   },
 
   /* Configure projects for major browsers */

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AmazerTrans - Automation Execution Configuration</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; margin: 0; padding: 24px; background: #f5f6f8; color: #1a1a1a; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
+  .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: middle; }
+  th { color: #555; font-weight: 600; }
+  input[type=text], input[type=password], select { width: 100%; box-sizing: border-box; padding: 5px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+  input[type=checkbox] { width: 16px; height: 16px; }
+  .row-select { width: 30px; text-align: center; }
+  .row-enabled { width: 60px; text-align: center; }
+  .row-actions { width: 70px; }
+  button { cursor: pointer; border: none; border-radius: 5px; padding: 7px 14px; font-size: 13px; font-weight: 600; }
+  .btn-primary { background: #2563eb; color: #fff; }
+  .btn-secondary { background: #e5e7eb; color: #1a1a1a; }
+  .btn-danger { background: #fff; color: #dc2626; border: 1px solid #dc2626; }
+  .btn-success { background: #16a34a; color: #fff; }
+  .toolbar { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+  .toolbar label { font-size: 13px; color: #444; display: flex; align-items: center; gap: 6px; }
+  .toolbar input[type=number] { width: 70px; }
+  #status { font-size: 13px; margin-top: 10px; white-space: pre-wrap; }
+  #output { background: #0f172a; color: #d1e7ff; font-family: Consolas, monospace; font-size: 12px; padding: 12px; border-radius: 6px; max-height: 420px; overflow-y: auto; white-space: pre-wrap; display: none; }
+  .hint { color: #888; font-size: 11px; margin-top: 2px; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; }
+  .pill-ok { background: #dcfce7; color: #166534; }
+  .pill-missing { background: #fee2e2; color: #991b1b; }
+  .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #ccc; border-top-color: #2563eb; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+  <h1>AmazerTrans - Automation Execution Configuration</h1>
+  <div class="subtitle">Edits e2e/AmazerTrans/config/users.config.json (structure) and .env (credentials only) directly on this machine. No test code changes needed for any change made here.</div>
+
+  <div class="card">
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th class="row-select">Run</th>
+          <th>User</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Branch</th>
+          <th>Browser</th>
+          <th class="row-enabled">Enabled</th>
+          <th class="row-actions"></th>
+        </tr>
+      </thead>
+      <tbody id="usersBody"></tbody>
+    </table>
+    <div class="toolbar">
+      <button class="btn-secondary" id="addUserBtn">+ Add User</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="toolbar">
+      <label>Test file: <input type="text" id="defaultTestMatch" style="width:180px" /></label>
+      <label>Workers: <input type="number" id="workers" min="1" /></label>
+      <button class="btn-secondary" id="saveBtn">Save Configuration</button>
+      <button class="btn-primary" id="runSelectedBtn">Run Selected</button>
+      <button class="btn-success" id="runEnabledBtn">Run All Enabled</button>
+    </div>
+    <div id="status"></div>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    const BROWSERS = ['chromium', 'firefox', 'webkit', 'edge'];
+    let state = null;
+
+    async function loadConfig() {
+      const res = await fetch('/api/config');
+      state = await res.json();
+      render();
+    }
+
+    function render() {
+      document.getElementById('defaultTestMatch').value = state.defaultTestMatch || '';
+      document.getElementById('workers').value = state.recommendedWorkers || state.users.filter(u => u.enabled).length || 1;
+      const body = document.getElementById('usersBody');
+      body.innerHTML = '';
+      for (const u of state.users) {
+        const tr = document.createElement('tr');
+        tr.dataset.id = u.id;
+        tr.innerHTML = `
+          <td class="row-select"><input type="checkbox" class="sel" ${u.enabled ? 'checked' : ''} /></td>
+          <td><input type="text" class="label" value="${escapeAttr(u.label)}" /></td>
+          <td><input type="text" class="username" value="${escapeAttr(u.username || '')}" placeholder="username/email" /></td>
+          <td>
+            <input type="password" class="password" placeholder="${u.passwordConfigured ? 'leave blank to keep current' : '(not set)'}" />
+            <div class="hint"><span class="pill ${u.passwordConfigured ? 'pill-ok' : 'pill-missing'}">${u.passwordConfigured ? 'configured' : 'not configured'}</span></div>
+          </td>
+          <td><input type="text" class="branch" value="${escapeAttr(u.branch || '')}" /></td>
+          <td>
+            <select class="browser">
+              ${BROWSERS.map(b => `<option value="${b}" ${b === u.browser ? 'selected' : ''}>${b}</option>`).join('')}
+            </select>
+          </td>
+          <td class="row-enabled"><input type="checkbox" class="enabled" ${u.enabled ? 'checked' : ''} /></td>
+          <td class="row-actions"><button class="btn-danger removeBtn">Remove</button></td>
+        `;
+        tr.querySelector('.removeBtn').addEventListener('click', () => {
+          tr.remove();
+        });
+        body.appendChild(tr);
+      }
+    }
+
+    function escapeAttr(v) {
+      return String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    }
+
+    function collectRows() {
+      return [...document.querySelectorAll('#usersBody tr')].map((tr, i) => {
+        const id = tr.dataset.id || `user${i + 1}`;
+        return {
+          id,
+          selected: tr.querySelector('.sel').checked,
+          label: tr.querySelector('.label').value,
+          username: tr.querySelector('.username').value,
+          password: tr.querySelector('.password').value, // blank = leave unchanged
+          branch: tr.querySelector('.branch').value,
+          browser: tr.querySelector('.browser').value,
+          enabled: tr.querySelector('.enabled').checked,
+        };
+      });
+    }
+
+    document.getElementById('addUserBtn').addEventListener('click', () => {
+      const existingIds = [...document.querySelectorAll('#usersBody tr')].map(tr => tr.dataset.id);
+      let n = 1;
+      while (existingIds.includes(`user${n}`)) n++;
+      const id = `user${n}`;
+      state.users.push({ id, label: `User ${n}`, username: '', passwordConfigured: false, branch: '', browser: 'chromium', enabled: true });
+      render();
+    });
+
+    document.getElementById('saveBtn').addEventListener('click', async () => {
+      const rows = collectRows();
+      setStatus('Saving...');
+      const res = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          defaultTestMatch: document.getElementById('defaultTestMatch').value,
+          recommendedWorkers: Number(document.getElementById('workers').value) || rows.length,
+          users: rows,
+        }),
+      });
+      state = await res.json();
+      render();
+      setStatus('Saved. (Credentials, if changed, were written to .env - never shown back here.)');
+    });
+
+    async function runTests(mode) {
+      const rows = collectRows();
+      const ids = mode === 'selected' ? rows.filter(r => r.selected).map(r => r.id) : null; // null = "all enabled", decided server-side from the saved config
+      if (mode === 'selected' && ids.length === 0) {
+        setStatus('No users checked in the "Run" column.');
+        return;
+      }
+      setStatus('<span class="spinner"></span> Running - this launches real browsers and can take several minutes per user...');
+      document.getElementById('output').style.display = 'none';
+      const res = await fetch('/api/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, workers: Number(document.getElementById('workers').value) || undefined }),
+      });
+      const data = await res.json();
+      setStatus(`Finished - exit code ${data.exitCode} (0 = all passed). Allure report opened separately in Chrome.`);
+      const out = document.getElementById('output');
+      out.textContent = data.output;
+      out.style.display = 'block';
+    }
+
+    document.getElementById('runSelectedBtn').addEventListener('click', () => runTests('selected'));
+    document.getElementById('runEnabledBtn').addEventListener('click', () => runTests('enabled'));
+
+    function setStatus(html) {
+      document.getElementById('status').innerHTML = html;
+    }
+
+    loadConfig();
+  </script>
+</body>
+</html>

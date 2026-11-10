@@ -1,0 +1,64 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - main [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - img "Company Logo" [ref=e8]
+          - generic [ref=e9]: Amazertrans
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - text: Welcome to
+            - generic [ref=e12]: Amazertrans!
+          - paragraph [ref=e13]: Enter Your username and password to access your account
+          - generic [ref=e14]:
+            - generic [ref=e15]:
+              - generic [ref=e16]: Username
+              - generic [ref=e17]:
+                - textbox [ref=e18]: devtest@gmail.com
+                - generic:
+                  - img
+            - generic [ref=e19]:
+              - generic [ref=e20]: Branch Name
+              - generic [ref=e21]:
+                - combobox [ref=e22]:
+                  - option "Select a branch" [disabled] [selected]
+                  - option "Aagra"
+                  - option "Amazer-Chennai"
+                  - option "Amazer-Tuticorin"
+                  - option "Andhra Pradesh"
+                  - option "Bangalore"
+                  - option "Business Hub"
+                  - option "Chennai"
+                  - option "Chennai Port Office"
+                  - option "Goa"
+                  - option "Gujarat"
+                  - option "indian"
+                  - option "Jaipur"
+                  - option "Kerala"
+                  - option "Kochi City"
+                  - option "Mumbai"
+                  - option "Paradise"
+                  - option "Sri lanka"
+                  - option "Tirunelveli"
+                  - option "trichy"
+                  - option "Tripura"
+                  - option "Tuticorin"
+                  - option "TVL"
+                  - option "Vizag"
+                - generic:
+                  - img
+            - generic [ref=e23]:
+              - generic [ref=e24]:
+                - generic [ref=e25]: Password
+                - button "Forgot Password?" [ref=e26] [cursor=pointer]
+              - generic [ref=e27]:
+                - textbox [ref=e28]: Welcome@123
+                - button [active] [ref=e29] [cursor=pointer]:
+                  - img [ref=e30]
+            - button "Login" [ref=e33] [cursor=pointer]
+      - img "Login Image" [ref=e35]
+  - alert [ref=e36]: /login/AMAZERTRANS
+```

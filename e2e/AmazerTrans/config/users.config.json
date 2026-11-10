@@ -1,0 +1,49 @@
+{
+  "recommendedWorkers": 4,
+  "environments": {
+    "default": "https://staging-fc.cargowayz.net/login/AMAZERTRANS"
+  },
+  "defaultTestMatch": "pricing.spec.ts",
+  "users": [
+    {
+      "id": "user1",
+      "label": "User 1",
+      "enabled": true,
+      "usernameEnv": "AMAZERTRANS_USERNAME",
+      "passwordEnv": "AMAZERTRANS_PASSWORD",
+      "branch": "Bengaluru Tech Hub",
+      "environment": "default",
+      "browser": "chromium"
+    },
+    {
+      "id": "user2",
+      "label": "User 2",
+      "enabled": true,
+      "usernameEnv": "AMAZERTRANS_USER2_USERNAME",
+      "passwordEnv": "AMAZERTRANS_USER2_PASSWORD",
+      "branch": "Mumbai",
+      "environment": "default",
+      "browser": "firefox"
+    },
+    {
+      "id": "user3",
+      "label": "User 3",
+      "enabled": true,
+      "usernameEnv": "AMAZERTRANS_USER3_USERNAME",
+      "passwordEnv": "AMAZERTRANS_USER3_PASSWORD",
+      "branch": "Mumbai",
+      "environment": "default",
+      "browser": "edge"
+    },
+    {
+      "id": "user4",
+      "label": "User 4",
+      "enabled": true,
+      "usernameEnv": "AMAZERTRANS_USER4_USERNAME",
+      "passwordEnv": "AMAZERTRANS_USER4_PASSWORD",
+      "branch": "Mumbai",
+      "environment": "default",
+      "browser": "chromium"
+    }
+  ]
+}

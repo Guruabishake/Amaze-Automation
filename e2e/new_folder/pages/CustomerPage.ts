@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
 import * as path from 'path';
-const filePath = path.resolve(process.cwd(), 'e2e', 'new_folder', 'assets', 'sample.png');
+const filePath = path.resolve('e2e', 'new_folder', 'assets', 'sample.png');
 
 export class CustomerPage {
 
@@ -14,7 +14,7 @@ export class CustomerPage {
 
   async clickCreate(): Promise<void> {
     await this.page.getByRole('button', { name: 'CRM' }).click();
-    await this.page.getByRole('button', { name: 'Vendor Management' }).click();
+    await this.page.getByRole('button', { name: 'Customer Management' }).click();
     await this.createButton.waitFor({ state: 'visible' });
     await this.createButton.click();
   }
@@ -25,9 +25,6 @@ export class CustomerPage {
      await page.getByRole('textbox', { name: 'Customer Name' }).click();
   await page.getByRole('textbox', { name: 'Customer Name' }).fill('jeyaram Industries Pvt Lmt');
   await page.getByLabel('Customer Type').selectOption('Domestic');
-  await page.getByRole('textbox', { name: 'GL Code' }).click();
-  await page.getByRole('textbox', { name: 'GL Code' }).fill('12355');
-  await page.getByRole('textbox', { name: 'GL Code' }).press('Tab');
   await page.getByLabel('Sub Type').selectOption('Regular');
   await page.getByLabel('Gst Applicable').selectOption('Yes');
   await page.getByLabel('Gst Applicable').press('Tab');
@@ -38,11 +35,6 @@ export class CustomerPage {
   await page.getByRole('textbox', { name: 'Address 3' }).fill('no need');
   await page.getByRole('textbox', { name: 'Address 3' }).press('Tab');
   await page.getByLabel('Country').press('Tab');
-  await page.getByLabel('State', { exact: true }).press('ArrowDown');
-  await page.getByLabel('State', { exact: true }).selectOption('Odisha');
-  await page.getByLabel('State', { exact: true }).press('Shift+Tab');
-  await page.getByLabel('Country').press('Tab');
-  await page.getByLabel('State', { exact: true }).selectOption('Telangana');
   await page.getByLabel('State', { exact: true }).selectOption('Tamil Nadu');
   await page.getByLabel('State', { exact: true }).press('Tab');
   await page.getByRole('textbox', { name: 'State Code' }).press('Tab');
@@ -58,8 +50,6 @@ export class CustomerPage {
   await page.getByRole('textbox', { name: 'IEC' }).press('Tab');
   await page.getByRole('textbox', { name: 'CIN No' }).fill('9844fssd8978s98df98');
   await page.getByRole('textbox', { name: 'CIN No' }).press('Tab');
-  await page.getByRole('textbox', { name: 'Sales Person' }).fill('ragu dermin');
-  await page.getByRole('textbox', { name: 'Sales Person' }).press('Tab');
   await page.getByLabel('Status').press('Tab');
   await page.getByRole('button', { name: 'Cancel' }).press('Tab');
   await page.locator('div').filter({ hasText: /^Contact Details$/ }).nth(1).click();
@@ -80,8 +70,6 @@ export class CustomerPage {
   await page.getByRole('textbox', { name: 'Bank Name' }).press('Tab');
   await page.getByRole('textbox', { name: 'Account Number' }).fill('9874586498498498');
   await page.getByRole('textbox', { name: 'Account Number' }).press('Tab');
-  await page.getByLabel('Account Type').press('ArrowDown');
-  await page.getByLabel('Account Type').press('ArrowUp');
   await page.getByLabel('Account Type').selectOption('savings');
   await page.getByLabel('Account Type').press('Tab');
   await page.getByRole('textbox', { name: 'IFSC Code' }).fill('IFST54656');
@@ -90,22 +78,7 @@ export class CustomerPage {
   await page.getByRole('textbox', { name: 'Branch Name' }).press('Tab');
   await page.locator('div').filter({ hasText: /^KYC Details$/ }).nth(1).click();
   await page.locator('#state').nth(1).selectOption('Tamil Nadu');
-  await page.locator('#state').nth(1).press('Tab');
-  await page.getByRole('textbox', { name: 'GST No' }).press('Tab');
-  await page.getByRole('textbox', { name: 'Branch 1' }).press('Shift+Tab');
-  // await page.getByRole('textbox', { name: 'GST No' }).fill('987DF');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('ArrowRight');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('Clear');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('ArrowUp');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('ArrowLeft');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('ArrowRight');
-  // await page.getByRole('textbox', { name: 'GST No' }).press('ArrowRight');
-  await page.getByRole('textbox', { name: 'GST No' }).fill('98868FD7DF');
-  await page.getByRole('textbox', { name: 'GST No' }).press('ArrowRight');
-  await page.getByRole('textbox', { name: 'GST No' }).press('ArrowUp');
   await page.getByRole('textbox', { name: 'GST No' }).fill('DF98868FD7DF');
-  await page.getByRole('textbox', { name: 'GST No' }).press('ArrowRight');
-  await page.getByRole('textbox', { name: 'GST No' }).press('ArrowUp');
   await page.getByRole('textbox', { name: 'GST No' }).press('Tab');
   await page.getByRole('textbox', { name: 'Branch 1' }).fill('Mumbai');
   await page.getByRole('textbox', { name: 'Branch 1' }).press('Tab');
@@ -127,9 +100,6 @@ export class CustomerPage {
   await page.getByRole('textbox', { name: 'Credit Limits' }).click();
   await page.getByRole('textbox', { name: 'Credit Limits' }).fill('20');
   await page.getByRole('button', { name: 'Create' }).click();
-
-    // 🔹 Continue with Contact Details, Bank, KYC, Uploads, Credit Details...
-    // Keep your entire existing code here, exactly as you wrote
   }
 }
 

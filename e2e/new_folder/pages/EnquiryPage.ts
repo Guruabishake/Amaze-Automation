@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import { fillTextbox, selectDropdown } from '../utils/commonActions';
 import { enquiryData } from '../utils/testData';
-import * as path from 'path';
+    import * as path from 'path';
 
 const filepath1 = path.resolve(process.cwd(), 'e2e', 'new_folder', 'assets', 'sample.png');
 
@@ -18,10 +18,10 @@ export class EnquiryPage {
 
   // ---------------- LOGIN ----------------
   async login() {
-    await this.page.goto('https://staging-amazertrans.cargowayz.net/login/AMAZERTRANS');
+    await this.page.goto('https://staging-fc.cargowayz.net/login/AMAZERTRANS');
 
     await this.page.locator('input[type="text"]').fill(enquiryData.email);
-    await this.page.getByRole('combobox').selectOption('15');
+    await this.page.getByRole('combobox').selectOption(enquiryData.branch);
     await this.page.locator('input[type="password"]').fill(enquiryData.password);
     await this.page.getByRole('button', { name: 'Login' }).click();
   }

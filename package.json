@@ -2,7 +2,17 @@
   "name": "test",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:enquiry": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/enquiry.spec.ts ENQUIRY",
+    "test:enquiry:report": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/enquiry.spec.ts ENQUIRY",
+    "test:quotation": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/quotation.spec.ts QUOTATION",
+    "test:quotation:report": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/quotation.spec.ts QUOTATION",
+    "test:pricing": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/pricing.spec.ts PRICING",
+    "test:pricing:report": "node scripts/run-with-allure.js e2e/AmazerTrans/tests/pricing.spec.ts PRICING",
+    "test:multiuser": "node scripts/run-multiuser.js",
+    "config:ui": "node scripts/config-ui.js",
+    "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -10,6 +20,7 @@
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.2",
-    "allure-playwright": "^3.5.0"
+    "allure-playwright": "^3.5.0",
+    "dotenv": "^17.4.2"
   }
 }

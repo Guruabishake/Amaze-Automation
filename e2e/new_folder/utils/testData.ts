@@ -1,9 +1,9 @@
 
 export const loginData = {
-url: 'https://staging-amazertrans.cargowayz.net/login/AMAZERTRANS',
-username: 'devtest@gmail.com',
-branch: '15',
-password: 'Welcome@123'
+url: 'https://staging-fc.cargowayz.net/login/AMAZERTRANS',
+username: 'admin12@gmail.com',
+branch: '19',
+password: 'Digifc@2026'
 
 }
 
@@ -20,8 +20,9 @@ phone: '9876446546'
 //enquiry Data 
 }
 export const enquiryData = {
-  email: 'devtest@gmail.com',
-  password: 'Welcome@123',
+  email: 'admin12@gmail.com',
+  branch : '19',  
+  password: 'Digifc@2026',
 
   source: 'Direct Call',
   blNo: 'BL12345',

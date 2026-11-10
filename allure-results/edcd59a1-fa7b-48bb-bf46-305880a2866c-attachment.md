@@ -1,0 +1,453 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - complementary [ref=e5]:
+        - generic [ref=e6]:
+          - img "Company Logo" [ref=e8] [cursor=pointer]
+          - generic [ref=e9]:
+            - button "CRM" [active] [ref=e10] [cursor=pointer]:
+              - img [ref=e11]
+            - button "CB" [ref=e13] [cursor=pointer]:
+              - img [ref=e14]
+            - button "FF" [ref=e19] [cursor=pointer]:
+              - img [ref=e20]
+            - button "TMS" [ref=e24] [cursor=pointer]:
+              - img [ref=e25]
+            - button "INVOICE" [ref=e30] [cursor=pointer]:
+              - img [ref=e31]
+            - button "HRMS" [ref=e36] [cursor=pointer]:
+              - img [ref=e37]
+            - button "WMS" [ref=e41] [cursor=pointer]:
+              - img [ref=e42]
+            - button "Finance" [ref=e44] [cursor=pointer]:
+              - img [ref=e45]
+            - button "Master" [ref=e49] [cursor=pointer]:
+              - img [ref=e50]
+            - button "Access" [ref=e53] [cursor=pointer]:
+              - img [ref=e54]
+            - button "OCR" [ref=e57] [cursor=pointer]:
+              - img [ref=e58]
+            - button "General" [ref=e61] [cursor=pointer]:
+              - img [ref=e62]
+          - generic [ref=e65]:
+            - generic [ref=e67] [cursor=pointer]: A
+            - button "Logout" [ref=e68] [cursor=pointer]:
+              - img [ref=e69]
+        - generic [ref=e71]:
+          - heading "Amazertrans" [level=2] [ref=e72]
+          - list [ref=e73]:
+            - listitem [ref=e74]:
+              - button "Dashboard" [ref=e75] [cursor=pointer]:
+                - img [ref=e76]
+                - generic [ref=e78]: Dashboard
+            - listitem [ref=e79]:
+              - button "Customer Management" [ref=e80] [cursor=pointer]:
+                - img [ref=e81]
+                - generic [ref=e85]: Customer Management
+            - listitem [ref=e86]:
+              - button "Vendor Management" [ref=e87] [cursor=pointer]:
+                - img [ref=e88]
+                - generic [ref=e92]: Vendor Management
+            - listitem [ref=e93]:
+              - button "Sales Management" [ref=e94] [cursor=pointer]:
+                - generic [ref=e95]:
+                  - img [ref=e96]
+                  - generic [ref=e98]: Sales Management
+                - img [ref=e99]
+            - listitem [ref=e101]:
+              - button "Reports" [ref=e102] [cursor=pointer]:
+                - generic [ref=e103]:
+                  - img [ref=e104]
+                  - generic [ref=e108]: Reports
+                - img [ref=e109]
+      - main [ref=e112]:
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - heading "Create Vendor" [level=1] [ref=e119]
+            - button "Back" [ref=e121] [cursor=pointer]:
+              - generic [ref=e122]: Back
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - textbox "Vendor Name" [ref=e127]
+                  - generic: Vendor Name
+                - generic [ref=e128]:
+                  - generic [ref=e129]:
+                    - combobox "Vendor Type" [ref=e130]:
+                      - option [selected]
+                      - option "Domestic"
+                      - option "Foreign"
+                    - img
+                  - generic: Vendor Type
+                - generic [ref=e131]:
+                  - textbox "Address 1" [ref=e132]
+                  - generic: Address 1
+                - generic [ref=e133]:
+                  - textbox "Address 2" [ref=e134]
+                  - generic: Address 2
+                - generic [ref=e135]:
+                  - textbox "Address 3" [ref=e136]
+                  - generic: Address 3
+                - generic [ref=e137]:
+                  - generic [ref=e138]:
+                    - combobox "Country" [ref=e139]:
+                      - option [selected]
+                      - option "Afghanistan"
+                      - option "Aland Islands"
+                      - option "Albania"
+                      - option "Algeria"
+                      - option "American Samoa"
+                      - option "Andorra"
+                      - option "Angola"
+                      - option "Anguilla"
+                      - option "Antarctica"
+                      - option "Antigua and Barbuda"
+                      - option "Argentina"
+                      - option "Armenia"
+                      - option "Aruba"
+                      - option "Australia"
+                      - option "Austria"
+                      - option "Azerbaijan"
+                      - option "Bahamas"
+                      - option "Bahrain"
+                      - option "Bangladesh"
+                      - option "Barbados"
+                      - option "Belarus"
+                      - option "Belgium"
+                      - option "Belize"
+                      - option "Benin"
+                      - option "Bermuda"
+                      - option "Bhutan"
+                      - option "Bolivia"
+                      - option "Bosnia and Herzegovina"
+                      - option "Botswana"
+                      - option "Bouvet Island"
+                      - option "Brazil"
+                      - option "British Indian Ocean Territory"
+                      - option "British Virgin Islands"
+                      - option "Brunei"
+                      - option "Bulgaria"
+                      - option "Burkina Faso"
+                      - option "Burundi"
+                      - option "Cambodia"
+                      - option "Cameroon"
+                      - option "Canada"
+                      - option "Cape Verde"
+                      - option "Caribbean Netherlands"
+                      - option "Cayman Islands"
+                      - option "Central African Republic"
+                      - option "Chad"
+                      - option "Chile"
+                      - option "China"
+                      - option "Christmas Island"
+                      - option "Cocos (Keeling) Islands"
+                      - option "Colombia"
+                      - option "Comoros"
+                      - option "Cook Islands"
+                      - option "Costa Rica"
+                      - option "Croatia"
+                      - option "Cuba"
+                      - option "Curaçao"
+                      - option "Cyprus"
+                      - option "Czechia"
+                      - option "Denmark"
+                      - option "Djibouti"
+                      - option "Dominica"
+                      - option "Dominican Republic"
+                      - option "DR Congo"
+                      - option "Ecuador"
+                      - option "Egypt"
+                      - option "El Salvador"
+                      - option "Equatorial Guinea"
+                      - option "Eritrea"
+                      - option "Estonia"
+                      - option "Eswatini"
+                      - option "Ethiopia"
+                      - option "Falkland Islands"
+                      - option "Faroe Islands"
+                      - option "Fiji"
+                      - option "Finland"
+                      - option "France"
+                      - option "French Guiana"
+                      - option "French Polynesia"
+                      - option "French Southern and Antarctic Lands"
+                      - option "Gabon"
+                      - option "Gambia"
+                      - option "Georgia"
+                      - option "Germany"
+                      - option "Ghana"
+                      - option "Gibraltar"
+                      - option "Greece"
+                      - option "Greenland"
+                      - option "Grenada"
+                      - option "Guadeloupe"
+                      - option "Guam"
+                      - option "Guatemala"
+                      - option "Guernsey"
+                      - option "Guinea"
+                      - option "Guinea-Bissau"
+                      - option "Guyana"
+                      - option "Haiti"
+                      - option "Heard Island and McDonald Islands"
+                      - option "Honduras"
+                      - option "Hong Kong"
+                      - option "Hungary"
+                      - option "Iceland"
+                      - option "India"
+                      - option "Indonesia"
+                      - option "Iran"
+                      - option "Iraq"
+                      - option "Ireland"
+                      - option "Isle of Man"
+                      - option "Israel"
+                      - option "Italy"
+                      - option "Ivory Coast"
+                      - option "Jamaica"
+                      - option "Japan"
+                      - option "Jersey"
+                      - option "Jordan"
+                      - option "Kazakhstan"
+                      - option "Kenya"
+                      - option "Kiribati"
+                      - option "Kosovo"
+                      - option "Kuwait"
+                      - option "Kyrgyzstan"
+                      - option "Laos"
+                      - option "Latvia"
+                      - option "Lebanon"
+                      - option "Lesotho"
+                      - option "Liberia"
+                      - option "Libya"
+                      - option "Liechtenstein"
+                      - option "Lithuania"
+                      - option "Luxembourg"
+                      - option "Macau"
+                      - option "Madagascar"
+                      - option "Malawi"
+                      - option "Malaysia"
+                      - option "Maldives"
+                      - option "Mali"
+                      - option "Malta"
+                      - option "Marshall Islands"
+                      - option "Martinique"
+                      - option "Mauritania"
+                      - option "Mauritius"
+                      - option "Mayotte"
+                      - option "Mexico"
+                      - option "Micronesia"
+                      - option "Moldova"
+                      - option "Monaco"
+                      - option "Mongolia"
+                      - option "Montenegro"
+                      - option "Montserrat"
+                      - option "Morocco"
+                      - option "Mozambique"
+                      - option "Myanmar"
+                      - option "Namibia"
+                      - option "Nauru"
+                      - option "Nepal"
+                      - option "Netherlands"
+                      - option "New Caledonia"
+                      - option "New Zealand"
+                      - option "Nicaragua"
+                      - option "Niger"
+                      - option "Nigeria"
+                      - option "Niue"
+                      - option "Norfolk Island"
+                      - option "Northern Mariana Islands"
+                      - option "North Korea"
+                      - option "North Macedonia"
+                      - option "Norway"
+                      - option "Oman"
+                      - option "Pakistan"
+                      - option "Palau"
+                      - option "Palestine"
+                      - option "Panama"
+                      - option "Papua New Guinea"
+                      - option "Paraguay"
+                      - option "Peru"
+                      - option "Philippines"
+                      - option "Pitcairn Islands"
+                      - option "Poland"
+                      - option "Portugal"
+                      - option "Puerto Rico"
+                      - option "Qatar"
+                      - option "Republic of the Congo"
+                      - option "Réunion"
+                      - option "Romania"
+                      - option "Russia"
+                      - option "Rwanda"
+                      - option "Saint Barthélemy"
+                      - option "Saint Helena, Ascension and Tristan da Cunha"
+                      - option "Saint Kitts and Nevis"
+                      - option "Saint Lucia"
+                      - option "Saint Martin"
+                      - option "Saint Pierre and Miquelon"
+                      - option "Saint Vincent and the Grenadines"
+                      - option "Samoa"
+                      - option "San Marino"
+                      - option "São Tomé and Príncipe"
+                      - option "Saudi Arabia"
+                      - option "Senegal"
+                      - option "Serbia"
+                      - option "Seychelles"
+                      - option "Sierra Leone"
+                      - option "Singapore"
+                      - option "Sint Maarten"
+                      - option "Slovakia"
+                      - option "Slovenia"
+                      - option "Solomon Islands"
+                      - option "Somalia"
+                      - option "South Africa"
+                      - option "South Georgia"
+                      - option "South Korea"
+                      - option "South Sudan"
+                      - option "Spain"
+                      - option "Sri Lanka"
+                      - option "Sudan"
+                      - option "Suriname"
+                      - option "Svalbard and Jan Mayen"
+                      - option "Sweden"
+                      - option "Switzerland"
+                      - option "Syria"
+                      - option "Taiwan"
+                      - option "Tajikistan"
+                      - option "Tanzania"
+                      - option "Thailand"
+                      - option "Timor-Leste"
+                      - option "Togo"
+                      - option "Tokelau"
+                      - option "Tonga"
+                      - option "Trinidad and Tobago"
+                      - option "Tunisia"
+                      - option "Turkey"
+                      - option "Turkmenistan"
+                      - option "Turks and Caicos Islands"
+                      - option "Tuvalu"
+                      - option "Uganda"
+                      - option "Ukraine"
+                      - option "United Arab Emirates"
+                      - option "United Kingdom"
+                      - option "United States"
+                      - option "United States Minor Outlying Islands"
+                      - option "United States Virgin Islands"
+                      - option "Uruguay"
+                      - option "Uzbekistan"
+                      - option "Vanuatu"
+                      - option "Vatican City"
+                      - option "Venezuela"
+                      - option "Vietnam"
+                      - option "Wallis and Futuna"
+                      - option "Western Sahara"
+                      - option "Yemen"
+                      - option "Zambia"
+                      - option "Zimbabwe"
+                    - img
+                  - generic: Country
+                - generic [ref=e140]:
+                  - generic [ref=e141]:
+                    - combobox "State" [disabled] [ref=e142]:
+                      - option [selected]
+                    - img
+                  - generic: State
+                - generic [ref=e143]:
+                  - textbox "State Code" [ref=e144]
+                  - generic: State Code
+                - generic [ref=e145]:
+                  - textbox "City" [ref=e146]
+                  - generic: City
+                - generic [ref=e147]:
+                  - textbox "Phone Number" [ref=e148]:
+                    - /placeholder: ""
+                  - generic: Phone Number
+                - generic [ref=e149]:
+                  - textbox "Email Address" [ref=e150]:
+                    - /placeholder: ""
+                  - generic: Email Address
+                - generic [ref=e151]:
+                  - textbox "PAN" [ref=e152]
+                  - generic: PAN
+                - generic [ref=e153]:
+                  - textbox "IEC" [ref=e154]
+                  - generic: IEC
+                - generic [ref=e155]:
+                  - textbox "CIN No" [ref=e156]
+                  - generic: CIN No
+                - generic [ref=e158]:
+                  - checkbox "Operational" [checked] [ref=e159] [cursor=pointer]
+                  - generic [ref=e160] [cursor=pointer]: Operational
+                - generic [ref=e161]:
+                  - generic [ref=e162]:
+                    - combobox "Operational TDS" [ref=e163]:
+                      - option
+                      - option "YES"
+                      - option "NO" [selected]
+                    - img
+                  - generic: Operational TDS
+                - generic [ref=e165]:
+                  - checkbox "Non-Operational" [ref=e166] [cursor=pointer]
+                  - generic [ref=e167] [cursor=pointer]: Non-Operational
+                - generic [ref=e168]:
+                  - generic [ref=e169]:
+                    - combobox "Sales Person" [ref=e170]:
+                      - option [selected]
+                      - option "S-EMI-000019 - Ananthakrishnan Selvam"
+                      - option "S-EMI-000023 - Karthikeyan Murugan"
+                      - option "S-EMI-000029 - Krishna Moorthy"
+                      - option "S-EMI-000030 - Karthik Ramanathan"
+                      - option "S-EMI-000031 - Priya Selvam"
+                      - option "S-EMI-000034 - Vignesh Balaji"
+                      - option "S-EMI-000035 - Selvam Kumar"
+                      - option "S-EMI-000036 - Gopal Krishnan"
+                      - option "S-EMI-000037 - Rohan Sharma"
+                      - option "S-EMI-000038 - Arun Kumar"
+                      - option "S-EMI-000039 - Rajesh Kanana"
+                      - option "S-EMI-000042 - Hari Prasad"
+                    - img
+                  - generic: Sales Person
+                - generic [ref=e171]:
+                  - generic [ref=e172]:
+                    - combobox "Status" [ref=e173]:
+                      - option
+                      - option "Active" [selected]
+                      - option "Inactive"
+                    - img
+                  - generic: Status
+                - generic [ref=e174]:
+                  - textbox "Contract Start Date" [ref=e175]:
+                    - /placeholder: " "
+                  - generic: Contract Start Date
+                - generic [ref=e176]:
+                  - textbox "Contract End Date" [ref=e177]:
+                    - /placeholder: " "
+                  - generic: Contract End Date
+                - generic [ref=e178]:
+                  - textbox "KYC Expiry Date" [ref=e179]:
+                    - /placeholder: " "
+                  - generic: KYC Expiry Date
+              - generic [ref=e181] [cursor=pointer]:
+                - heading "Contact Details" [level=1] [ref=e184]
+                - img [ref=e185]
+              - generic [ref=e188] [cursor=pointer]:
+                - heading "Bank Details" [level=1] [ref=e191]
+                - img [ref=e192]
+              - generic [ref=e195] [cursor=pointer]:
+                - heading "Branch Details" [level=1] [ref=e198]
+                - img [ref=e199]
+              - generic [ref=e202] [cursor=pointer]:
+                - heading "KYC Document Upload" [level=1] [ref=e205]
+                - img [ref=e206]
+              - generic [ref=e209] [cursor=pointer]:
+                - heading "Credit Details" [level=1] [ref=e212]
+                - img [ref=e213]
+            - generic [ref=e215]:
+              - button "Cancel" [ref=e217] [cursor=pointer]:
+                - generic [ref=e218]: Cancel
+              - button "Create" [ref=e220] [cursor=pointer]:
+                - generic [ref=e221]: Create
+  - alert [ref=e222]: Vendor Management
+```
